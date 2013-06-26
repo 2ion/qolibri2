@@ -479,7 +479,7 @@ GroupDock::GroupDock(QWidget * parent)
     addTab(groupTab, QIcon(":/images/group.png"), tr("Group"));
 
     markTab = new MarkTab(this);
-    addTab(markTab, QIcon(":/images/bookmark.png"), tr("Mark"));
+    addTab(markTab, QIcon(":/images/bookmark.png"), tr("Bookmarks"));
 
     historyTab = new HistoryTab(this);
     addTab(historyTab, QIcon(":/images/history.png"), tr("History"));
@@ -494,7 +494,7 @@ GroupDock::GroupDock(QWidget * parent)
     tabWidget->addTab(groupTab, QIcon(":/images/group.png"), tr("Group"));
 
     markTab = new MarkTab(this);
-    tabWidget->addTab(markTab, QIcon(":/images/marktab.png"), tr("Mark"));
+    tabWidget->addTab(markTab, QIcon(":/images/marktab.png"), tr("Bookmarks"));
 
     historyTab = new HistoryTab(this);
     tabWidget->addTab(historyTab, QIcon(":/images/history.png"), tr("History"));
