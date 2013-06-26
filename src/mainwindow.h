@@ -24,6 +24,7 @@
 #include <QProcess>
 
 #include "method.h"
+#include "aboutdialog.h"
 
 class QAction;
 class QActionGroup;

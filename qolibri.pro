@@ -14,7 +14,8 @@ HEADERS += src/mainwindow.h \
            src/configsetting.h \
            src/ssheet.h \
            src/titlelabel.h \
-           src/statusbutton.h
+           src/statusbutton.h \
+           src/aboutdialog.h
 
 SOURCES += src/qolibri.cpp \
            src/mainwindow.cpp \
@@ -31,7 +32,10 @@ SOURCES += src/qolibri.cpp \
            src/fontsetting.cpp \
            src/ssheetsetting.cpp \
            src/configsetting.cpp \
-           src/statusbutton.cpp
+           src/statusbutton.cpp \
+           src/aboutdialog.cpp
+
+FORMS +=   src/aboutdialog.ui
 
 INCLUDEPATH += src
 RESOURCES += src/qolibri.qrc
