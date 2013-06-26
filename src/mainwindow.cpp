@@ -149,7 +149,7 @@ void MainWindow::createMenus()
                                   bookView, SLOT(zoomOut()), QString("Ctrl++"));
 
 
-    QMenu *smenu = menuBar()->addMenu(tr("&Setting"));
+    QMenu *smenu = menuBar()->addMenu(tr("&Settings"));
     booksAct = smenu->addAction(QIcon(":/images/books.png"), tr("Book group settings"),
                                 this, SLOT(setBooks()));
     CONNECT_BUSY(booksAct);
