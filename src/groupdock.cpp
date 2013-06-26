@@ -169,13 +169,13 @@ void GroupTab::popupMenu(const QPoint &pos)
 
     QMenu menu;
     QAction *iAct = menu.addAction(QIcon(":images/find_l.png"),
-                                   tr("Show Book &Information"));
+                                   tr("Book &information"));
     QAction *rAct = menu.addAction(QIcon(":images/bookopen.png"),
-                                   tr("&Read Book"));
+                                   tr("&Read book"));
     QAction *aAct = menu.addAction(QIcon(":images/bookopen.png"),
-                                   tr("Read &All Data"));
+                                   tr("Read &all data"));
     QAction *fAct = menu.addAction(QIcon(":images/font3.png"),
-                                   tr("&Font Setting"));
+                                   tr("&Font settings"));
     QAction *a = menu.exec(widget->viewport()->mapToGlobal(pos));
     if (a == iAct) {
         emit bookViewRequested(bookWidget_->currentBook());

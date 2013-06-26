@@ -112,16 +112,16 @@ void MainWindow::createMenus()
                                 this, SLOT(viewSearch()), tr("Ctrl+F"));
     CONNECT_BUSY(enterAct);
     openBookAct = fmenu->addAction(QIcon(":/images/bookopen.png"),
-                                   tr("&Open Book"),
+                                   tr("&Open book"),
                                    this, SLOT(viewMenu()), tr("Ctrl+O"));
     CONNECT_BUSY(openBookAct);
 
     viewAllAct = fmenu->addAction(QIcon(":/images/find.png"),
-                                  tr("&View All Data"),
+                                  tr("&View all data"),
                                   this, SLOT(viewFull()), tr("Ctrl+D"));
     CONNECT_BUSY(viewAllAct);
 
-    stopAct = fmenu->addAction(QIcon(":/images/stop.png"), tr("&Cancel"),
+    stopAct = fmenu->addAction(QIcon(":/images/stop.png"), tr("&Abort search"),
                                bookView, SLOT(stopSearch()), Qt::Key_Escape);
     connect(stopAct, SIGNAL(triggered()), this, SLOT(stopSound()));
     stopAct->setEnabled(false);
@@ -130,80 +130,80 @@ void MainWindow::createMenus()
 
     QMenu *emenu = menuBar()->addMenu(tr("&Edit"));
     clearEditAct = emenu->addAction(QIcon(":/images/clear.png"),
-                                    tr("clear search text"));
+                                    tr("Clear search form"));
 
 
     QMenu *vmenu = menuBar()->addMenu(tr("&View"));
     toggleDockAct = new QAction(QIcon(":/images/dock_mac.png"),
-                                tr("Dock On/Off"), this);
+                                tr("Toggle dock visibility"), this);
     toggleDockAct->setCheckable(true);
     connect(toggleDockAct, SIGNAL(triggered(bool)),
             this, SLOT(toggleDock(bool)));
     vmenu->addAction(toggleDockAct);
     toggleBarAct = vmenu->addAction(QIcon(":/images/find_l.png"),
-                                    tr("search/read book"),
+                                    tr("Search or read book"),
                                     this, SLOT(toggleBar()));
-    zoomInAct = vmenu->addAction(QIcon(":/images/zoomin.png"), tr("zoom &out"),
+    zoomInAct = vmenu->addAction(QIcon(":/images/zoomin.png"), tr("Zoom &out"),
                                  bookView, SLOT(zoomIn()), QString("Ctrl+-"));
-    zoomOutAct = vmenu->addAction(QIcon(":/images/zoomout.png"), tr("zoom &in"),
+    zoomOutAct = vmenu->addAction(QIcon(":/images/zoomout.png"), tr("Zoom &in"),
                                   bookView, SLOT(zoomOut()), QString("Ctrl++"));
 
 
     QMenu *smenu = menuBar()->addMenu(tr("&Setting"));
-    booksAct = smenu->addAction(QIcon(":/images/books.png"), tr("Group set"),
+    booksAct = smenu->addAction(QIcon(":/images/books.png"), tr("Book group settings"),
                                 this, SLOT(setBooks()));
     CONNECT_BUSY(booksAct);
     configAct = smenu->addAction(QIcon(":/images/setting.png"),
-                                 tr("Option setting"), this, SLOT(setConfig()));
+                                 tr("Preferences"), this, SLOT(setConfig()));
     CONNECT_BUSY(configAct);
     addMarkAct = smenu->addAction(QIcon(":/images/bookmark.png"),
-                                  tr("Book Mark"),
+                                  tr("Bookmarks"),
                                   this, SLOT(addMark()));
     CONNECT_BUSY(addMarkAct);
     toggleTabsAct = smenu->addAction(QIcon(":/images/tabs.png"),
-                                     tr("tab on/off"));
+                                     tr("Toggle tabbed viewing mode"));
     toggleTabsAct->setCheckable(true);
     CONNECT_BUSY(toggleTabsAct);
-    QMenu *mf = smenu->addMenu(QIcon(":/images/font1.png"), tr("Font Set"));
+    QMenu *mf = smenu->addMenu(QIcon(":/images/font1.png"), tr("Font settings"));
     fontAct = mf->menuAction();
-    mf->addAction(QIcon(":/images/font1.png"), tr("Browser Font"),
+    mf->addAction(QIcon(":/images/font1.png"), tr("Browser font"),
                   this, SLOT(setViewFont()));
-    mf->addAction(QIcon(":/images/font2.png"), tr("Application Font"),
+    mf->addAction(QIcon(":/images/font2.png"), tr("Application font"),
                   this, SLOT(setAppFont()));
 
     QMenu *ms = smenu->addMenu(QIcon(":/images/stylesheet.png"),
-                               tr("Style Sheet"));
+                               tr("Style sheets"));
     sSheetAct = ms->menuAction();
     ms->addAction(QIcon(":/images/stylesheet.png"),
-                  tr("Dictionary Style Sheet"), this, SLOT(setDictSheet()));
+                  tr("Dictionary style sheet"), this, SLOT(setDictSheet()));
     ms->addAction(QIcon(":/images/stylesheet2.png"),
-                  tr("Book Style Sheet"), this, SLOT(setBookSheet()));
+                  tr("Book style sheets"), this, SLOT(setBookSheet()));
     ms->addAction(QIcon(":/images/stylesheet3.png"),
-                  tr("Internal Style Sheet 1"), this, SLOT(setStatusBarSheet()));
+                  tr("Internal style sheet"), this, SLOT(setStatusBarSheet()));
     optDirectionMenu = smenu->addMenu(QIcon(":/images/find_l.png"),
-                                   tr("Option Search"));
+                                   tr("Search mode"));
     optDirectionGroup = new QActionGroup(this);
     QAction *act;
-    act = optDirectionMenu->addAction(QObject::tr("&Exact Word Search"));
+    act = optDirectionMenu->addAction(QObject::tr("Find &exact matches"));
     act->setData(ExactWordSearch);
     optDirectionGroup->addAction(act);
-    act = optDirectionMenu->addAction(QObject::tr("&Forward Search"));
+    act = optDirectionMenu->addAction(QObject::tr("&Forward search"));
     act->setData(ForwardSearch);
     optDirectionGroup->addAction(act);
-    act = optDirectionMenu->addAction(QObject::tr("&Keyword Search"));
+    act = optDirectionMenu->addAction(QObject::tr("&Keyword lookup"));
     act->setData(KeywordSearch);
     optDirectionGroup->addAction(act);
-    act = optDirectionMenu->addAction(QObject::tr("&Cross Search"));
+    act = optDirectionMenu->addAction(QObject::tr("&Cross search"));
     act->setData(CrossSearch);
     optDirectionGroup->addAction(act);
     optDirectionMenu->addSeparator();
-    act = optDirectionMenu->addAction(QObject::tr("&Google Search"));
+    act = optDirectionMenu->addAction(QObject::tr("&Google lookup"));
     act->setData(GoogleSearch);
     optDirectionGroup->addAction(act);
-    act = optDirectionMenu->addAction(QObject::tr("&WikiPedia Search"));
+    act = optDirectionMenu->addAction(QObject::tr("&Wikipedia lookup"));
     act->setData(WikipediaSearch);
     optDirectionGroup->addAction(act);
-    act = optDirectionMenu->addAction(QObject::tr("&User Defined URL Search"));
+    act = optDirectionMenu->addAction(QObject::tr("&User-defined URL lookup"));
     act->setData(Option1Search);
     optDirectionGroup->addAction(act);
     foreach(QAction * a, optDirectionMenu->actions()) {
@@ -214,23 +214,23 @@ void MainWindow::createMenus()
 
 
 #if !defined (Q_WS_WIN)
-    smenu->addAction(QIcon(":/images/delete.png"), tr("&Clear Cashe"),
+    smenu->addAction(QIcon(":/images/delete.png"), tr("&Free cache"),
                      this, SLOT(clearCashe()));
 #endif
     toggleRubyAct = smenu->addAction(QIcon(":/images/ruby.png"),
-                                     tr("&Suppress Subscription"), this,
+                                     tr("&Toggle Ruby scripts support"), this,
                                      SLOT(toggleRuby()));
     toggleRubyAct->setCheckable(true);
 
     QMenu *hmenu = menuBar()->addMenu(tr("&Help"));
-    hmenu->addAction(tr("about &QT"), qApp, SLOT(aboutQt()));
-    hmenu->addAction(tr("about Q&oribri"), this, SLOT(aboutQolibri()));
+    hmenu->addAction(tr("About &Qt"), qApp, SLOT(aboutQt()));
+    hmenu->addAction(tr("About Q&olibri"), this, SLOT(aboutQolibri()));
 }
 
 void MainWindow::createToolBars()
 {
     setIconSize(QSize(32, 32));
-    QToolBar *bar1 = addToolBar("Search/Read Book");
+    QToolBar *bar1 = addToolBar("Search or read book");
     bar1->setMovable(false);
     bar1->addAction(toggleBarAct);
 #ifdef Q_WS_MAC
@@ -256,7 +256,7 @@ void MainWindow::createToolBars()
     searchBar->addAction(enterAct);
     searchBar->addAction(stopAct);
 
-    bookBar = addToolBar("Read Book");
+    bookBar = addToolBar("Read book");
     bookBar->setMovable(false);
     StatusButton *gbutton2 = new StatusButton(groupDock->groupCombo(),
                                               "group", this, true);
@@ -284,23 +284,22 @@ void MainWindow::createToolBars()
     bar2->addAction(toggleTabsAct);
 
     addToolBarBreak();
-    methodBar = addToolBar(tr("Search Methods"));
+    methodBar = addToolBar(tr("Search mode"));
     methodBar->setMovable(false);
     //methodBar->addWidget(new QLabel("  "));
 
     methodCombo = new QComboBox(this);
     methodCombo->setSizeAdjustPolicy(QComboBox::AdjustToContents);
-    methodCombo->addItem(QObject::tr("Exact Word Search"));
-    methodCombo->addItem(QObject::tr("Forward Search"));
-    methodCombo->addItem(QObject::tr("Backward Search"));
-    methodCombo->addItem(QObject::tr("Keyword Search"));
-    methodCombo->addItem(QObject::tr("Cross Search"));
-    methodCombo->addItem(QObject::tr("Full Text Search"));
+    methodCombo->addItem(QObject::tr("Exact match"));
+    methodCombo->addItem(QObject::tr("Forward"));
+    methodCombo->addItem(QObject::tr("Backward"));
+    methodCombo->addItem(QObject::tr("By keyword"));
+    methodCombo->addItem(QObject::tr("Cross-reference"));
+    methodCombo->addItem(QObject::tr("Full text"));
     methodCombo->setCurrentIndex(-1);
     connect(methodCombo, SIGNAL(currentIndexChanged(int)),
             this, SLOT(changeDirection(int)));
     methodBar->addWidget(methodCombo);
-    methodBar->addWidget(new QLabel(tr(" Logic:")));
     logicCombo = new QComboBox(this);
     logicCombo->setSizeAdjustPolicy(QComboBox::AdjustToContents);
     logicCombo->addItem(tr("AND"));
@@ -310,7 +309,7 @@ void MainWindow::createToolBars()
             this, SLOT(changeLogic(int)));
     methodBar->addWidget(logicCombo);
 
-    methodBar->addWidget(new QLabel(tr(" Hit Limit (Book/Total):")));
+    methodBar->addWidget(new QLabel(tr("Limit results (per book/total)")));
     limitBookSpin = new QSpinBox();
     limitBookSpin->setRange(CONF->stepBookHitMax, CONF->maxLimitBookHit);
     limitBookSpin->setSingleStep(CONF->stepBookHitMax);
@@ -330,7 +329,7 @@ void MainWindow::createToolBars()
     methodBar->addAction(fontAct);
 
     toggleMethodBarAct = methodBar->toggleViewAction();
-    toggleMethodBarAct->setText(tr("option bar On/Off"));
+    toggleMethodBarAct->setText(tr("Toggle option bar"));
     toggleMethodBarAct->setIcon(QIcon(":/images/configure.png"));
 
     bar2->addAction(toggleMethodBarAct);

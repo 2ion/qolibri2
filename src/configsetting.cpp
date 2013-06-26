@@ -30,26 +30,26 @@ ConfigSetting::ConfigSetting(QWidget *parent)
 #ifdef Q_WS_MAC
     setWindowFlags(Qt::Sheet);
 #else
-    setWindowTitle(tr("Preference Settings"));
+    setWindowTitle(tr("Preferences"));
 #endif
 
     QVBoxLayout *vl = new QVBoxLayout;
     vl->addStretch();
-    highlightCheck = new QCheckBox(tr("Emphasize match string"));
+    highlightCheck = new QCheckBox(tr("Highlight matching sequences"));
     vl->addWidget(highlightCheck);
-    beepSoundCheck = new QCheckBox(tr("Beep Sound"));
+    beepSoundCheck = new QCheckBox(tr("Audible bell"));
     vl->addWidget(beepSoundCheck);
     {
         QGridLayout *g = new QGridLayout;
         {
-            g->addWidget(new QLabel(tr("Max History")), 0, 0);
+            g->addWidget(new QLabel(tr("History length")), 0, 0);
             historyBox = new QSpinBox();
             historyBox->setRange(10, 1000);
             historyBox->setSingleStep(10);
             g->addWidget(historyBox, 0, 1);
         }
         {
-            g->addWidget(new QLabel(tr("Indent left offset")), 1, 0);
+            g->addWidget(new QLabel(tr("Left margin")), 1, 0);
             indentOffsetBox = new QSpinBox();
             indentOffsetBox->setRange(0, 100);
             indentOffsetBox->setSingleStep(10);
@@ -59,9 +59,9 @@ ConfigSetting::ConfigSetting(QWidget *parent)
     } {
         QGridLayout *g = new QGridLayout;
         {
-            g->addWidget(new QLabel(tr("External Program")), 0, 0, 1, 3);
+            g->addWidget(new QLabel(tr("Command")), 0, 0, 1, 3);
         } {
-            g->addWidget(new QLabel(tr("Sound(wave)")), 1, 0);
+            g->addWidget(new QLabel(tr("Sound (WAV)")), 1, 0);
             waveProcEdit = new QLineEdit();
             QPushButton *b = new QPushButton(QIcon(":images/open.png"), 
                                              QString(), this);
@@ -69,7 +69,7 @@ ConfigSetting::ConfigSetting(QWidget *parent)
             g->addWidget(waveProcEdit, 1, 1);
             g->addWidget(b, 1, 2);
         } {
-            g->addWidget(new QLabel(tr("Movie(mpeg)")), 2, 0);
+            g->addWidget(new QLabel(tr("Movie (MPEG)")), 2, 0);
             mpegProcEdit = new QLineEdit();
             QPushButton *b = new QPushButton(QIcon(":images/open.png"), 
                                              QString(), this);
@@ -77,7 +77,7 @@ ConfigSetting::ConfigSetting(QWidget *parent)
             g->addWidget(mpegProcEdit, 2, 1);
             g->addWidget(b, 2, 2);
         } {
-            g->addWidget(new QLabel(tr("WEB Browser")), 3, 0);
+            g->addWidget(new QLabel(tr("Browser")), 3, 0);
             browserProcEdit = new QLineEdit();
             QPushButton *b = new QPushButton(QIcon(":images/open.png"),
                                              QString(), this);
@@ -93,7 +93,7 @@ ConfigSetting::ConfigSetting(QWidget *parent)
             wikipediaUrlEdit = new QLineEdit();
             g->addWidget(wikipediaUrlEdit, 5, 1, 1, 2);
         } {
-            g->addWidget(new QLabel(tr("User Define URL")), 6, 0);
+            g->addWidget(new QLabel(tr("User-defined URL")), 6, 0);
             userDefUrlEdit = new QLineEdit();
             g->addWidget(userDefUrlEdit, 6, 1, 1, 2);
         }
@@ -102,49 +102,49 @@ ConfigSetting::ConfigSetting(QWidget *parent)
     vl->addStretch();
     QGridLayout *g = new QGridLayout;
     {
-        g->addWidget(new QLabel(tr("Limit of number of Image")), 0, 0);
+        g->addWidget(new QLabel(tr("Maximum image results")), 0, 0);
         limitImageBox = new QSpinBox();
         limitImageBox->setRange(100, 2000);
         limitImageBox->setSingleStep(100);
         g->addWidget(limitImageBox, 0, 1);
     } {
-        g->addWidget(new QLabel(tr("Limit of characters")), 1, 0);
+        g->addWidget(new QLabel(tr("Maximum number of characters")), 1, 0);
         limitCharBox = new QSpinBox();
         limitCharBox->setRange(100000, 7000000);
         limitCharBox->setSingleStep(10000);
         g->addWidget(limitCharBox, 1, 1);
     } {
-        g->addWidget(new QLabel(tr("Limit of Menu Items")), 2, 0);
+        g->addWidget(new QLabel(tr("Maximum number of menu entries")), 2, 0);
         limitMenuBox = new QSpinBox();
         limitMenuBox->setRange(100, 7000);
         limitMenuBox->setSingleStep(100);
         g->addWidget(limitMenuBox, 2, 1);
     } {
-        g->addWidget(new QLabel(tr("Limit of Hit Max per Book")), 3, 0);
+        g->addWidget(new QLabel(tr("Maximum number of results per book")), 3, 0);
         limitMaxBookBox = new QSpinBox();
         limitMaxBookBox->setRange(1000, 100000);
         limitMaxBookBox->setSingleStep(1000);
         g->addWidget(limitMaxBookBox, 3, 1);
     } {
-        g->addWidget(new QLabel(tr("Limit of Total Hit Max")), 4, 0);
+        g->addWidget(new QLabel(tr("Maximum total number of results")), 4, 0);
         limitMaxTotalBox = new QSpinBox();
         limitMaxTotalBox->setRange(1000, 100000);
         limitMaxTotalBox->setSingleStep(1000);
         g->addWidget(limitMaxTotalBox, 4, 1);
     } {
-        g->addWidget(new QLabel(tr("Step of Hit Max per Book")), 5, 0);
+        g->addWidget(new QLabel(tr("Step counter for results per book")), 5, 0);
         stepBookHitBox = new QSpinBox();
         stepBookHitBox->setRange(10, 1000);
         stepBookHitBox->setSingleStep(10);
         g->addWidget(stepBookHitBox, 5, 1);
     } {
-        g->addWidget(new QLabel(tr("Step of Total Hit Max")), 6, 0);
+        g->addWidget(new QLabel(tr("Step counter for total results")), 6, 0);
         stepTotalHitBox = new QSpinBox();
         stepTotalHitBox->setRange(100, 10000);
         stepTotalHitBox->setSingleStep(100);
         g->addWidget(stepTotalHitBox, 6, 1);
     }
-    QGroupBox *gb = new QGroupBox(tr("Change Carefully these parameter"));
+    QGroupBox *gb = new QGroupBox(tr("Advanced"));
     gb->setLayout(g);
     gb->setCheckable(true);
     gb->setChecked(false);
@@ -155,7 +155,7 @@ ConfigSetting::ConfigSetting(QWidget *parent)
 
     {
 #ifdef Q_WS_MAC
-        v->addWidget(new TitleLabel(tr("Preference Settings")));
+        v->addWidget(new TitleLabel(tr("Preferences")));
 #endif
         v->addLayout(h);
         QDialogButtonBox *bBox;
@@ -182,7 +182,7 @@ void ConfigSetting::setWaveProcess()
 {
     QString prev = waveProcEdit->text();
     QString next = QFileDialog::getOpenFileName(this,
-                                                tr("Set Wave Player"), prev );
+                                                tr("Select the command for playing WAV files"), prev );
 
     if (!next.isEmpty()) waveProcEdit->setText(next);
 }
@@ -191,7 +191,7 @@ void ConfigSetting::setMpegProcess()
 {
     QString prev = mpegProcEdit->text();
     QString next = QFileDialog::getOpenFileName(this,
-                                                "Set Movie Player", prev );
+                                                tr("Select the command for playing MPEG files"), prev );
 
     if (!next.isEmpty()) mpegProcEdit->setText(next);
 }

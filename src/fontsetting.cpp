@@ -31,14 +31,14 @@ FontSetting::FontSetting(Book *pbook, QWidget *parent)
     : QDialog(parent), book(pbook)
 #endif
 {
-    setWindowTitle(tr("Internal Book Font Setting"));
+    setWindowTitle(tr("Book font settings"));
 
     QHBoxLayout *h = new QHBoxLayout();
     {
         fontTreeWidget = new QTreeWidget(this);
         fontTreeWidget->setColumnCount(3);
         QStringList hlabels;
-        hlabels << tr("Font") << tr("Code") << tr("Alternate Font");
+        hlabels << tr("Font") << tr("Code") << tr("Alternate font");
         fontTreeWidget->setHeaderLabels(hlabels);
         h->addWidget(fontTreeWidget);
         h->setStretchFactor(fontTreeWidget, 2);

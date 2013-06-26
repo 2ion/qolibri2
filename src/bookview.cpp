@@ -114,23 +114,23 @@ void BookBrowser::contextMenuEvent(QContextMenuEvent* event)
     QList <SearchDirection> dlist;
     if (textCursor().hasSelection()) {
         menu->addSeparator();
-        alist << menu->addAction(QObject::tr("&Exact Word Search"));
+        alist << menu->addAction(QObject::tr("Find &exact matches"));
         dlist << ExactWordSearch;
-        alist << menu->addAction(QObject::tr("&Forward Search"));
+        alist << menu->addAction(QObject::tr("&Forward search"));
         dlist << ForwardSearch;
-        alist << menu->addAction(QObject::tr("&Keyword Search"));
+        alist << menu->addAction(QObject::tr("&Keyword lookup"));
         dlist << KeywordSearch;
-        alist << menu->addAction(QObject::tr("&Cross Search"));
+        alist << menu->addAction(QObject::tr("&Cross search"));
         dlist << CrossSearch;
         menu->addSeparator();
-        alist << menu->addAction(QObject::tr("&Google Search"));
+        alist << menu->addAction(QObject::tr("&Google lookup"));
         dlist << GoogleSearch;
-        alist << menu->addAction(QObject::tr("&WikiPedia Search"));
+        alist << menu->addAction(QObject::tr("&WikiPedia lookup"));
         dlist << WikipediaSearch;
-        alist << menu->addAction(QObject::tr("&User Defined URL Search"));
+        alist << menu->addAction(QObject::tr("&User-defined URL lookup"));
         dlist << Option1Search;
         menu->addSeparator();
-        menu->addAction(QObject::tr("Copy to Search Edit"), this,
+        menu->addAction(QObject::tr("Copy into search form"), this,
                         SLOT(pasteSearchText()));
     }
     QAction *a = menu->exec(event->globalPos());
@@ -609,17 +609,17 @@ InfoPage::InfoPage(QWidget *parent, const SearchMethod &method)
     if (eb.isHaveText())
         mstr += QObject::tr("Text") + " ";
     if (eb.isHaveWordSearch())
-        mstr += QObject::tr("Forward Search") + " ";
+        mstr += QObject::tr("Forward search") + " ";
     if (eb.isHaveEndwordSearch())
-        mstr += QObject::tr("Backward Search") + " ";
+        mstr += QObject::tr("Backward search") + " ";
     if (eb.isHaveKeywordSearch())
-        mstr += QObject::tr("Keyword Search") + " ";
+        mstr += QObject::tr("Keyword lookup") + " ";
     if (eb.isHaveCrossSearch())
-        mstr += QObject::tr("Cross Search") + " ";
+        mstr += QObject::tr("Cross search") + " ";
 
     mstr += "</b>";
 
-    QString str = QString(tr("Title: <b>%1</b>\nSearch Method: %2"))
+    QString str = QString(tr("Title: <b>%1</b>\nSearch method: %2"))
                           .arg(eb.title()).arg(mstr);
     txt += composeHLine('2', "BOOK", eb.path(), str);
     items << new QTreeWidgetItem(top_tree, treeItem("BOOK", eb.path()));
@@ -1352,7 +1352,7 @@ BookView::BookView(QWidget *parent)
     close_button->setCursor(Qt::ArrowCursor);
     close_button->setAutoRaise(true);
     close_button->setIcon(QIcon(":images/closetab.png"));
-    close_button->setToolTip(tr("Close page"));
+    close_button->setToolTip(tr("Close"));
     close_button->setEnabled(true);
     connect(close_button, SIGNAL(clicked()), this, SLOT(closeTab()));
     connect(this, SIGNAL(tabChanged(int)),

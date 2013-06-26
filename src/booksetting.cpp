@@ -43,7 +43,7 @@ BookSetting::BookSetting(const QList<Group*> &grp, QWidget *parent)
     {
         QHBoxLayout *h1 = new QHBoxLayout();
         {
-            QLabel *l = new QLabel(tr("Search Directory"));
+            QLabel *l = new QLabel(tr("Directory root"));
             searchPath = new QLineEdit(QDir::homePath(), this);
             connect(searchPath, SIGNAL(textChanged(QString)),
                     this, SLOT(searchPathChanged(QString)));
@@ -57,9 +57,9 @@ BookSetting::BookSetting(const QList<Group*> &grp, QWidget *parent)
         QHBoxLayout *h2 = new QHBoxLayout();
         {
             searchButton = new QPushButton(QIcon(":images/downarrow.png"),
-                                           tr("Search Start"), this);
+                                           tr("Search"), this);
             connect(searchButton, SIGNAL(clicked()), this, SLOT(searchBook()));
-            cancelButton = new QPushButton(tr("Cancel"), this);
+            cancelButton = new QPushButton(tr("Abort"), this);
             cancelButton->setEnabled(false);
             connect(cancelButton, SIGNAL(clicked()), this,
                     SLOT(cancelSearch()));
@@ -68,7 +68,7 @@ BookSetting::BookSetting(const QList<Group*> &grp, QWidget *parent)
             h2->addWidget(cancelButton);
             h2->addStretch();
         }
-        QLabel *l = new QLabel(tr("<b>SEARCH BOOKS :</b>"));
+        QLabel *l = new QLabel(tr("<b>BOOK SEARCH</b>"));
         findPaths = new QLabel();
         findPaths->setFrameShape(QFrame::StyledPanel);
         findPaths->setFixedWidth(290);
