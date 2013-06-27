@@ -1,3 +1,5 @@
+DEFINES += "QOLIBRI_VERSION=2.0-alpha0"
+
 HEADERS += src/mainwindow.h \
            src/method.h \
            src/book.h \
@@ -40,8 +42,9 @@ FORMS +=   src/aboutdialog.ui
 INCLUDEPATH += src
 RESOURCES += src/qolibri.qrc
 OBJECTS_DIR += build
-MOC_DIR += build
-RCC_DIR += build
+MOC_DIR = build
+RCC_DIR = build
+UI_DIR  = src/ui 
 
 TARGET = qolibri
 DESTDIR = ./bin
