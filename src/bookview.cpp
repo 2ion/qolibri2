@@ -23,6 +23,7 @@
 #include "bookview.h"
 #include "ebook.h"
 #include "configure.h"
+#include "util.h"
 
 static bool stopFlag = false;
 static MainWindow *mainWin = 0;
@@ -68,7 +69,7 @@ void BookBrowser::setSource(const QUrl &name)
         } else if (QSound::isAvailable()) {
             emit soundRequested(args[1]);
         } else {
-            qWarning() << "Can't play sound" << CONF->waveProcess << args[1];
+            qo_warn << tr("Can't play sound") << CONF->waveProcess << args[1];
             emit statusRequested("Can't play sound");
         }
     } else if (args[0] == "book" || args[0] == "menu") {
@@ -78,7 +79,7 @@ void BookBrowser::setSource(const QUrl &name)
         if ( args.count() == 4) {
             int index = args[1].toInt();
             if (index >= bookList_.count()) {
-                qWarning() << "Invalid book index" << args[1];
+                qo_warn << tr("Invalid book index") << args[1];
                 emit statusRequested("ERROR : Invalid book index: " + args[1]);
                 return;
             }
