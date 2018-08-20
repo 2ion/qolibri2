@@ -1,0 +1,5 @@
+The development of this qolibri fork has stalled for more than 5 years.
+I hereby declare it dead.
+
+An active fork with working Qt5 support and a whole lot of other fixes
+is being maintained at https://github.com/ludios/qolibri.
